@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="bg-gray-100 dark:bg-gray-900">
+      <body className="bg-gray-100 dark:bg-gray-500">
         <ThemeProvider>
           <div className="flex">
             <SideBar />
