@@ -1,13 +1,28 @@
-import DotsIcon from "@/components/icons/DotsIcon";
 import PlusIcon from "@/components/icons/PlusIcon";
 import PageTitle from "@/components/shared/PageTitle";
 import Button from "@/components/ui/Button";
-import React from "react";
+import clsx from "clsx";
+import React, { useState } from "react";
+import DropdownComponent from "./dropdownComponent/DropdownComponent";
+import Logo from "./Logo/Logo";
+import useSidebarStore from "@/store/useSidebarStore";
 
 const TopBar = () => {
+  const isSidebarOpen = useSidebarStore((state) => state.isOpen);
+
   return (
-    <header className="bg-white px-[24px] h-[64px] sm:h-[96px] flex items-center justify-between border-b border-secondary">
-      <PageTitle text="Platform Launch" />
+    <header
+      className={clsx(
+        "bg-white px-[24px] h-[64px] sm:h-[96px] flex items-center justify-between border-b border-secondary",
+        "dark:bg-gray-500 dark:border-gray-400"
+      )}
+    >
+      <div className="flex h-full">
+        {!isSidebarOpen && <Logo />}
+        <div className="flex ps-6">
+          <PageTitle text="Platform Launch" />
+        </div>
+      </div>
 
       <div className="flex items-center gap-[24px]">
         <Button className="flex items-center px-[18px] py-[10px] sm:px-[24px] sm:py-[14px]">
@@ -17,7 +32,8 @@ const TopBar = () => {
             <span className="hidden sm:block">Add New Task</span>
           </div>
         </Button>
-        <DotsIcon />
+
+        <DropdownComponent />
       </div>
     </header>
   );
