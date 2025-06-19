@@ -1,4 +1,4 @@
-import Logo from "@/components/icons/Logo";
+import LogoIcon from "@/components/icons/LogoIcon";
 import React from "react";
 
 const SidebarHead = () => {
@@ -10,7 +10,7 @@ const SidebarHead = () => {
           <span className="rounded-[2px] w-[6px] bg-primary/75 h-full block" />
           <span className="rounded-[2px] w-[6px] bg-primary/50 h-full block" />
         </div>
-        <Logo />
+        <LogoIcon />
       </div>
     </div>
   );

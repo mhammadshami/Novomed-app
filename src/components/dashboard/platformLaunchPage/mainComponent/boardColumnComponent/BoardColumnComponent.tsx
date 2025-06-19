@@ -4,6 +4,7 @@ import BoardColumnHead from "./boardColumnHead/BoardColumnHead";
 import TaskCard from "./taskCard/TaskCard";
 import useModalStore from "@/store/useModalStore";
 import SelectInput from "@/components/ui/forms/SelectInput";
+import TextInput from "@/components/ui/forms/TextInput";
 
 const BoardColumnComponent = () => {
    const [status, setStatus] = useState("");
@@ -24,6 +25,7 @@ const BoardColumnComponent = () => {
         value={status}
         onChange={(v) => setStatus(v)}
       />
+      <TextInput label="Text Field"/>
       <div className="flex flex-col gap-5 mt-6">
         <TaskCard />
         <TaskCard />

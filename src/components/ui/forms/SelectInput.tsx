@@ -31,7 +31,7 @@ const SelectInput: React.FC<SelectInputProps> = ({
   return (
     <div className="w-full space-y-2">
       {label && (
-        <label className="text-sm font-medium text-gray-500 dark:text-gray-300">
+        <label className="text-xs font-bold leading-none text-gray-300 dark:text-white">
           {label}
         </label>
       )}

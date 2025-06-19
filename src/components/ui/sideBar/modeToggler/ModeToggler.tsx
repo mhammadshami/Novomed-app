@@ -5,7 +5,7 @@ import Switch from "../../Switch";
 
 const ModeToggler = () => {
   return (
-    <div className="flex items-center mt-auto gap-[23.67px] ms-[24px] me-[25px]">
+    <div className="bg-gray-100 dark:bg-gray-900 h-[48px] flex items-center justify-center rounded-md mt-auto gap-[23.67px] ms-[24px] me-[25px]">
       <SunIcon />
       <Switch isOn={true} 
       //onToggle={() => {}}
