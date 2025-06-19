@@ -7,8 +7,6 @@ const MainComponent = () => {
       <BoardColumnComponent />
       <BoardColumnComponent />
       <BoardColumnComponent />
-      <BoardColumnComponent />
-      <BoardColumnComponent />
     </div>
   )
 }

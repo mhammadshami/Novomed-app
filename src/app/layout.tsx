@@ -4,6 +4,7 @@ import "../styles/globals.css";
 // components
 import SideBar from "@/components/ui/sideBar/SideBar";
 import ThemeProvider from "@/components/shared/ThemeProvider";
+import ModalRenderer from "@/components/shared/ModalRenderer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,6 +25,7 @@ export default function RootLayout({
             {children}
           </div>
         </ThemeProvider>
+        <ModalRenderer />
       </body>
 
       <script
