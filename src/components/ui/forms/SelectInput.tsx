@@ -1,5 +1,5 @@
+import React from "react";
 import ArrowDownIcon from "@/components/icons/ArrowDownIcon";
-import ArrowDown from "@/components/icons/ArrowDownIcon";
 import {
   Listbox,
   ListboxButton,
@@ -7,8 +7,6 @@ import {
   ListboxOptions,
 } from "@headlessui/react";
 import clsx from "clsx";
-import { Check, ChevronDown } from "lucide-react";
-import React from "react";
 
 type Option = {
   label: string;
@@ -42,50 +40,39 @@ const SelectInput: React.FC<SelectInputProps> = ({
         <div className="relative">
           <ListboxButton
             className={clsx(
-              "relative w-full cursor-pointer rounded border px-4 py-2 text-start text-sm focus:outline-none",
+              "h-[40px] relative w-full cursor-pointer rounded border border-solid px-4 py-2 text-start text-sm focus:outline-none",
               "text-base-dark dark:text-gray-300",
-              "bg-white dark:bg-gray-500",
-              "border-gray-300 dark:border-gray-500",
-              "hover:border-primary focus-visible:ring-2 focus-visible:ring-primary",
-              value && "border-primary"
+              "dark:bg-gray-500",
+              value
+                ? "border-primary"
+                : "border-gray-200 dark:border-[#414552]",
+              "hover:border-primary focus-visible:ring-1 focus-visible:ring-primary"
             )}
           >
-            <span className="block truncate text-[13px] text-base-dark dark:text-white leading-[23px] font-medium">{selected?.label}</span>
+            <span className="block truncate text-[13px] text-base-dark dark:text-white leading-[23px] font-medium">
+              {selected?.label}
+            </span>
             <span className="absolute inset-y-0 flex items-center pointer-events-none right-3">
-              {/* <ChevronDown size={16} /> */}
-              <ArrowDownIcon  />
+              <ArrowDownIcon />
             </span>
           </ListboxButton>
 
-          <ListboxOptions className="absolute z-20 w-full py-1 mt-[7px] overflow-auto bg-white rounded-md shadow-lg max-h-60 dark:bg-gray-900 ring-1 ring-black/10 focus:outline-none">
+          <ListboxOptions className="absolute space-y-[8px] z-20 w-full p-4 mt-[7px] overflow-auto bg-white rounded-lg shadow-lg max-h-60 dark:bg-gray-900 ring-1 ring-black/10 focus:outline-none">
             {options.map((option) => (
               <ListboxOption
                 key={option.value}
                 value={option.value}
                 className={({ active }) =>
                   clsx(
-                    "relative cursor-pointer select-none py-2 pl-10 pr-4",
-                    active
-                      ? "bg-primary text-white"
-                      : "text-base-dark dark:text-gray-300"
+                    "relative cursor-pointer select-none text-gray-300 font-medium text-[13px] leading-[23px]"
                   )
                 }
               >
                 {({ selected }) => (
                   <>
-                    <span
-                      className={clsx(
-                        "block truncate",
-                        selected ? "font-semibold" : "font-normal"
-                      )}
-                    >
+                    <span className={clsx("block truncate")}>
                       {option.label}
                     </span>
-                    {selected && (
-                      <span className="absolute left-3 top-2.5">
-                        <Check size={16} className="text-primary" />
-                      </span>
-                    )}
                   </>
                 )}
               </ListboxOption>
