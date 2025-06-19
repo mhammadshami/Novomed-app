@@ -1,16 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "../styles/globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// components
+import SideBar from "@/components/ui/sideBar/SideBar";
+import ThemeProvider from "@/components/shared/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,12 +16,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className="bg-gray-100">
+        <ThemeProvider>
+          <div className="flex">
+            <SideBar />
+            {children}
+          </div>
+        </ThemeProvider>
       </body>
+
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+      (function() {
+        const theme = localStorage.getItem('theme-storage');
+        const preferredTheme = theme ? JSON.parse(theme).state.theme : 'light';
+        document.documentElement.classList.add(preferredTheme);
+      })();
+    `,
+        }}
+      />
     </html>
   );
 }

@@ -1,0 +1,36 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: "class",
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
+  theme: {
+    extend: {
+      fontSize: {
+        sm: "15px"
+      },
+      colors: {
+        primary: {
+          DEFAULT: "#635FC7",
+          hover: "#A8A4FF",
+        },
+        secondary: "#E4EBFA",
+        destructive: {
+          DEFAULT: "#EA5555",
+          hover: "#FF9898",
+        },
+        "base-dark": "#000112",
+        gray: {
+          100: "#F4F7FD",
+          200: "#F4F7FD",
+          300: "#828FA3",
+          400: "#3E3F4E",
+          500: "#2B2C37",
+          900: "#20212C",
+        },
+      },
+    },
+    fontFamily: {
+      sans: ["Plus Jakarta Sans", "sans-serif"],
+    },
+  },
+  plugins: [],
+};
