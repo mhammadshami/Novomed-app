@@ -1,5 +1,5 @@
 import PlusIcon from "@/components/icons/PlusIcon";
-import PageTitle from "@/components/shared/PageTitle";
+import PageTitle from "@/components/ui/PageTitle";
 import Button from "@/components/ui/Button";
 import clsx from "clsx";
 import React, { useState } from "react";

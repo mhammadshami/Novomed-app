@@ -3,37 +3,18 @@ import React, {
   forwardRef,
   HTMLInputTypeAttribute,
   InputHTMLAttributes,
+  TextareaHTMLAttributes,
 } from "react";
 import InputLabel from "./InputLabel";
 
-// interface TextInputProps {
-//   label?: string;
-//   placeholder?: string;
-//   value?: string;
-//   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-//   error?: string;
-//   type?: HTMLInputTypeAttribute;
-//   name?: string;
-//   className?: string;
-// }
-
-interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface TextareaInputProps
+  extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
   error?: string;
 }
-const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
+const TextareaInput = forwardRef<HTMLTextAreaElement, TextareaInputProps>(
   (
-    {
-      label,
-      placeholder = "",
-      //value,
-      //onChange,
-      error = "",
-      type = "text",
-      //name,
-      className = "",
-      ...props
-    },
+    { label, placeholder, error = "", className = "", rows = 4, ...props },
     ref
   ) => {
     return (
@@ -42,7 +23,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 
         <div
           className={clsx(
-            "h-[40px] relative flex items-center border rounded px-4 py-2 transition-colors text-sm",
+            "relative mt-2 flex items-center border rounded px-4 py-2 transition-colors text-sm",
             error
               ? "border-destructive text-destructive"
               : "border-gray-200 dark:border-[#414552] text-base-dark dark:text-white",
@@ -51,14 +32,14 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             className
           )}
         >
-          <input
+          <textarea
             ref={ref}
-            type={type}
             placeholder={placeholder}
+            rows={rows}
             {...props}
             className={clsx(
               "leading-[23px] text-base-dark dark:text-white w-full bg-transparent focus:outline-none placeholder-base-dark/25 dark:placeholder-white/25",
-              error && "text-destructive placeholder-destructive",
+              error && "text-destructive placeholder-destructive"
             )}
           />
           {error && (
@@ -72,4 +53,5 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   }
 );
 
-export default TextInput;
+TextareaInput.displayName = "TextareaInput";
+export default TextareaInput;

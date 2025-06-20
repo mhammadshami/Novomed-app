@@ -5,7 +5,14 @@ module.exports = {
   theme: {
     extend: {
       fontSize: {
-        sm: "15px"
+        "heading-xl": ["24px", { lineHeight: "30px", fontWeight: "700" }],
+        "heading-l": ["18px", { lineHeight: "23px", fontWeight: "700" }],
+        "heading-m": ["15px", { lineHeight: "19px", fontWeight: "700" }],
+        "heading-s": [
+          "12px",
+          { lineHeight: "15px", fontWeight: "700", letterSpacing: "2.4px" },
+        ],
+        sm: "15px",
       },
       colors: {
         primary: {

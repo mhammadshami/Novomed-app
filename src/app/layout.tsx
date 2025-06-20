@@ -4,7 +4,7 @@ import "../styles/globals.css";
 // components
 import SideBar from "@/components/ui/sideBar/SideBar";
 import ThemeProvider from "@/components/shared/ThemeProvider";
-import ModalRenderer from "@/components/shared/ModalRenderer";
+import ModalRenderer from "@/components/ui/modals/ModalRenderer";
 
 export const metadata: Metadata = {
   title: "Create Next App",

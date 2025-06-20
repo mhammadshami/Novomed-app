@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
 import useModalStore from "@/store/useModalStore";
-import AddTaskModal from "@/components/dashboard/platformLaunchPage/mainComponent/modals/addTaskModal/AddTaskModal";
-import EditTaskModal from "@/components/dashboard/platformLaunchPage/mainComponent/modals/editTaskModal/EditTaskModal";
-import DeleteTaskModal from "@/components/dashboard/platformLaunchPage/mainComponent/modals/deleteTaskModal/DeleteTaskModal";
-import AddColumnModal from "@/components/dashboard/platformLaunchPage/mainComponent/modals/addColumnModal/AddColumnModal";
+import AddTaskModal from "./addTaskModal/AddTaskModal";
+import EditTaskModal from "./editTaskModal/EditTaskModal";
+import DeleteTaskModal from "./deleteTaskModal/DeleteTaskModal";
+import AddColumnModal from "./addColumnModal/AddColumnModal";
 import { AnimatePresence, motion } from "framer-motion";
 
 const ModalRenderer = () => {
@@ -30,7 +30,7 @@ const ModalRenderer = () => {
               initial={{ opacity: 0, y: 2 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 2 }}
-              className="relative w-full max-w-lg overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl dark:bg-gray-800"
+              className="relative w-full max-w-lg p-6 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl sm:p-8 dark:bg-gray-800"
             >
               {type === "add-task" && <AddTaskModal onClose={closeModal} />}
               {type === "edit-task" && (
