@@ -12,30 +12,21 @@ import Button from "../../Button";
 import TextareaInput from "../../forms/TextareaInput";
 
 const taskSchema = z.object({
-  title: z.string().min(1, "Can’t be empty"),
-  description: z.string().optional(),
-  subtasks: z.array(
+  name: z.string().min(1, "Can’t be empty"),
+  columns: z.array(
     z.object({
-      text: z.string().min(1, "Can’t be empty"),
-      placeholder: z.string(),
+      name: z.string().min(1, "Can’t be empty"),
     })
   ),
-  status: z.string().min(1, "Select a status"),
 });
 
 type TaskFormData = z.infer<typeof taskSchema>;
 
-const statusOptions = [
-  { label: "Todo", value: "todo" },
-  { label: "In Progress", value: "in-progress" },
-  { label: "Done", value: "done" },
-];
-
-interface AddTaskModalProps {
+interface AddBoardModalProps {
   onClose: () => void;
 }
 
-const AddTaskModal: React.FC<AddTaskModalProps> = () => {
+const AddBoardModal: React.FC<AddBoardModalProps> = () => {
   const {
     control,
     handleSubmit,
@@ -44,19 +35,14 @@ const AddTaskModal: React.FC<AddTaskModalProps> = () => {
   } = useForm<TaskFormData>({
     resolver: zodResolver(taskSchema),
     defaultValues: {
-      title: "",
-      description: "",
-      subtasks: [
-        { text: "", placeholder: "e.g. Make coffee" },
-        { text: "", placeholder: "e.g. Drink coffee & smile" },
-      ],
-      status: "todo",
+      name: "",
+      columns: [{ name: "" }, { name: "" }],
     },
   });
 
   const { fields, append, remove } = useFieldArray({
     control,
-    name: "subtasks",
+    name: "columns",
   });
 
   const onSubmit = (data: TaskFormData) => {
@@ -70,24 +56,17 @@ const AddTaskModal: React.FC<AddTaskModalProps> = () => {
         <TextInput
           label="Title"
           placeholder="e.g. Take coffee break"
-          {...register("title")}
-          error={errors.title?.message}
-        />
-        <TextareaInput
-          label="Description"
-          placeholder="e.g. It’s always good to take a break. This 15 minute break will recharge the batteries a little."
-          {...register("description")}
-          error={errors.description?.message}
+          {...register("name")}
+          error={errors.name?.message}
         />
         <div>
-          <InputLabel label="Subtasks" />
+          <InputLabel label="Columns" />
           <div className="flex flex-col gap-y-3">
             {fields.map((field, index) => (
               <div key={field.id} className="flex gap-4">
                 <TextInput
-                  placeholder={field.placeholder}
-                  {...register(`subtasks.${index}.text`)}
-                  error={errors.subtasks?.[index]?.text?.message}
+                  {...register(`columns.${index}.name`)}
+                  error={errors.columns?.[index]?.name?.message}
                 />{" "}
                 <button
                   type="button"
@@ -104,37 +83,21 @@ const AddTaskModal: React.FC<AddTaskModalProps> = () => {
               className="w-full"
               onClick={() =>
                 append({
-                  text: "",
-                  placeholder: "",
+                  name: ""
                 })
               }
             >
-              + Add New Subtask
+              + Add New Column
             </Button>
           </div>
         </div>
 
-        <div>
-          <Controller
-            control={control}
-            name="status"
-            render={({ field }) => (
-              <SelectInput
-                label="Status"
-                options={statusOptions}
-                value={field.value}
-                onChange={field.onChange}
-              />
-            )}
-          />
-        </div>
-
         <Button size="sm" type="submit" className="w-full">
-          Create Task
+          Create New Board
         </Button>
       </div>
     </form>
   );
 };
 
-export default AddTaskModal;
+export default AddBoardModal;

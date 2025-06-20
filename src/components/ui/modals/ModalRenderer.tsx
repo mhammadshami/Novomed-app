@@ -6,6 +6,7 @@ import EditTaskModal from "./editTaskModal/EditTaskModal";
 import DeleteTaskModal from "./deleteTaskModal/DeleteTaskModal";
 import AddColumnModal from "./addColumnModal/AddColumnModal";
 import { AnimatePresence, motion } from "framer-motion";
+import AddBoardModal from "./addBoardModal/AddBoardModal";
 
 const ModalRenderer = () => {
   const { isOpen, type, data, closeModal } = useModalStore();
@@ -33,6 +34,7 @@ const ModalRenderer = () => {
               className="relative w-full max-w-lg p-6 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl sm:p-8 dark:bg-gray-800"
             >
               {type === "add-task" && <AddTaskModal onClose={closeModal} />}
+              {type === "add-board" && <AddBoardModal onClose={closeModal} />}
               {type === "edit-task" && (
                 <EditTaskModal task={data} onClose={closeModal} />
               )}
