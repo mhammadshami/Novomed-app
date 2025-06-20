@@ -24,21 +24,9 @@ const BoardColumnComponent = () => {
   return (
     <div className="w-[280px]">
       <BoardColumnHead />
-      <SelectInput
-        label="Dropdown (Active)"
-        options={options}
-        value={status}
-        onChange={(v) => setStatus(v)}
-      />
-      <TextInput label="Text Field" />
-      <SubtaskCheckbox checked={checked} label="First name" onChange={handleToggleCheckbox} />
       <div className="flex flex-col gap-5 mt-6">
         <TaskCard />
         <TaskCard />
-
-        <button onClick={() => useModalStore.getState().openModal("delete-task")}>
-          + Task
-        </button>
       </div>
     </div>
   );

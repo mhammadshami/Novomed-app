@@ -6,9 +6,14 @@ import React, { useState } from "react";
 import DropdownComponent from "./dropdownComponent/DropdownComponent";
 import Logo from "./Logo/Logo";
 import useSidebarStore from "@/store/useSidebarStore";
+import useModalStore from "@/store/useModalStore";
 
 const TopBar = () => {
   const isSidebarOpen = useSidebarStore((state) => state.isOpen);
+
+  const handleAddTask = () => {
+    useModalStore.getState().openModal("add-task");
+  };
 
   return (
     <header
@@ -25,7 +30,10 @@ const TopBar = () => {
       </div>
 
       <div className="flex items-center gap-[24px]">
-        <Button className="flex items-center px-[18px] py-[10px] sm:px-[24px] sm:py-[14px]">
+        <Button
+          onClick={handleAddTask}
+          className="flex items-center px-[18px] py-[10px] sm:px-[24px] sm:py-[14px]"
+        >
           <div className="leading-[19px] flex items-center">
             <PlusIcon />
             <span className="hidden sm:block">&nbsp;</span>
