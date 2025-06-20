@@ -36,7 +36,7 @@ const BoardColumnComponent = () => {
         <TaskCard />
         <TaskCard />
 
-        <button onClick={() => useModalStore.getState().openModal("add-board")}>
+        <button onClick={() => useModalStore.getState().openModal("delete-task")}>
           + Task
         </button>
       </div>

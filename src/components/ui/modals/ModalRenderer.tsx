@@ -7,6 +7,7 @@ import DeleteTaskModal from "./deleteTaskModal/DeleteTaskModal";
 import AddColumnModal from "./addColumnModal/AddColumnModal";
 import { AnimatePresence, motion } from "framer-motion";
 import AddBoardModal from "./addBoardModal/AddBoardModal";
+import DeleteBoardModal from "./deleteBoardModal/DeleteBoardModal";
 
 const ModalRenderer = () => {
   const { isOpen, type, data, closeModal } = useModalStore();
@@ -38,10 +39,13 @@ const ModalRenderer = () => {
               {type === "edit-task" && (
                 <EditTaskModal task={data} onClose={closeModal} />
               )}
+              {type === "add-column" && <AddColumnModal onClose={closeModal} />}
+              {type === "delete-board" && (
+                <DeleteBoardModal boardId={data} onClose={closeModal} />
+              )}
               {type === "delete-task" && (
                 <DeleteTaskModal taskId={data} onClose={closeModal} />
               )}
-              {type === "add-column" && <AddColumnModal onClose={closeModal} />}
             </motion.div>
           </div>
         </div>
